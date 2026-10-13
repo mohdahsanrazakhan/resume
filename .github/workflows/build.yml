@@ -38,6 +38,6 @@ jobs:
         run: |
           git config user.name "resume-bot"
           git config user.email "actions@github.com"
-          git add main.pdf
+          git add resume.pdf
           git diff --staged --quiet || git commit -m "Update resume PDF $(date -u +%Y-%m-%dT%H:%MZ)"
           git push
