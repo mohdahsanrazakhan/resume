@@ -2,8 +2,8 @@ name: Build Resume PDF
 
 on:
   schedule:
-    - cron: '*/30 * * * *'   # har ~30 min
-  workflow_dispatch:          # manual "Run" button bhi
+    - cron: '*/30 * * * *'   # every ~30 min
+  workflow_dispatch:          # manual "Run" button
 
 permissions:
   contents: write
@@ -28,7 +28,8 @@ jobs:
         uses: xu-cheng/latex-action@v3
         with:
           working_directory: src
-          root_file: mark_resume.tex        # <-- apni main .tex file ka naam yahan
+          root_file: mark_resume.tex        # <-- here your main .tex file name
+          latexmk_use_xelatex: true          # <-- this line is for Deedy/fontspec
 
       - name: Move PDF to repo root
         run: cp src/main.pdf main.pdf
